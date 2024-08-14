@@ -57,15 +57,15 @@ class RecyclerViewAdapter(
         val sat = item?.capacity
 
         //Converting unix timestamp to date and hour
-        val stateData  = unixFirstDate?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()) }
-        val stateHour = unixSecondDate?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()) }
+        val stateDataFirst  = unixFirstDate?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()) }
+        val stateDataLast = unixSecondDate?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()) }
 
         val city = item?.city?.pt_br ?: item?.city?.en ?: "Não localizado"
         val country = item?.country?.pt_br ?: item?.country?.en ?: "Não localizado"
 
         holder.nodeName.text = item?.alias
         holder.nodeKey.text = item?.publicKey
-        holder.nodeDataResult.text = "${stateData?.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))} - ${stateHour?.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}"
+        holder.nodeDataResult.text = "${stateDataFirst?.format(DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm:ss"))} - ${stateDataLast?.format(DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm:ss"))}"
         holder.nodeChannel.text = item?.channels.toString()
         holder.nodeCapacity.text = "${satToBTC(sat)} BTC"
         holder.nodeLocation.text = "$city - $country"

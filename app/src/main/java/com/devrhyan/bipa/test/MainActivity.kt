@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
               CoroutineScope(Dispatchers.IO).launch {
                   withContext(Dispatchers.Main) {
                       try {
-                          isLoading(true)
+                          isLoading(true);
                           handleApi()
                       } catch (e: Exception) {
                           Toast.makeText(applicationContext, "Erro ao recuperar Nodes, verifique sua conexão a internet e tente novamente.", Toast.LENGTH_LONG).show()

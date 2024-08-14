@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="0/0/0 - 0/0/0"
         android:textAlignment="textEnd"
-        android:textSize="10sp"
+        android:textSize="6sp"
         app:layout_constraintBottom_toTopOf="@+id/nodeLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
