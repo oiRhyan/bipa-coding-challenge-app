@@ -5,9 +5,10 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="android:statusBarColor">@color/white</item>
+        <item name="android:colorSecondary">@color/secondary</item>
+        <item name="android:background">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="backgroundColor">@color/white</item>
     </style>
 </resources>

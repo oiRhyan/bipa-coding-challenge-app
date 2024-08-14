@@ -6,7 +6,7 @@
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
 
-        <item name="backgroundColor">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Theme.Bipa" parent="Base.Theme.Bipa" />

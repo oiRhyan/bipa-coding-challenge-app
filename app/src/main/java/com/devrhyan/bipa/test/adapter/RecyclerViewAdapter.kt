@@ -20,6 +20,7 @@ class RecyclerViewAdapter(
 
     private var nodeList : List<Nodes>? = null
 
+    //Node list starter
     fun setNodeList(list : List<Nodes>) {
         nodeList = list
         notifyDataSetChanged()
@@ -34,6 +35,7 @@ class RecyclerViewAdapter(
         val nodeLocation = view.findViewById<TextView>(R.id.nodeLocation)
     }
 
+    //Inflating layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val LayoutInflater = inflater.inflate(R.layout.recycler_view_item, parent, false)
@@ -54,6 +56,7 @@ class RecyclerViewAdapter(
 
         val sat = item?.capacity
 
+        //Converting unix timestamp to date and hour
         val stateData  = unixFirstDate?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()) }
         val stateHour = unixSecondDate?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()) }
 

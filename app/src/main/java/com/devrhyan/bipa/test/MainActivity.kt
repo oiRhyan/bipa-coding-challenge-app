@@ -3,6 +3,7 @@ package com.devrhyan.bipa.test
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -38,15 +39,22 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        //Adapter Configuration and Implementation for RecyclerView
         binding.nodeView.adapter = Adapter
         binding.nodeView.layoutManager = LinearLayoutManager(this)
 
         binding.requestAPI.setOnClickListener {
               CoroutineScope(Dispatchers.IO).launch {
                   withContext(Dispatchers.Main) {
-                      isLoading(true)
-                      handleApi()
-                      isLoading(false)
+                      try {
+                          isLoading(true)
+                          handleApi()
+                      } catch (e: Exception) {
+                          Toast.makeText(applicationContext, "Erro ao recuperar Nodes, verifique sua conexão a internet e tente novamente.", Toast.LENGTH_LONG).show()
+                          Log.e("Coroutine Error", "Error running coroutine: ${e.message}")
+                      } finally {
+                          isLoading(false)
+                      }
                   }
               }
         }
@@ -57,22 +65,26 @@ class MainActivity : AppCompatActivity() {
         showAlertDialog(binding.main)
     }
 
+    //Asynchronous function for data request
     private suspend fun handleApi() {
         val request = retrofit.create(iNodes::class.java)
         val service = request.getNodes()
 
-        if(service.isSuccessful) {
-            val body = service.body()
+        try {
+            if(service.isSuccessful) {
+                val body = service.body()
 
-            if (body != null) {
-                Adapter.setNodeList(body)
+                if (body != null) {
+                    Adapter.setNodeList(body)
+                }
             }
-
-        } else {
-            println("Erro ao requisitar API")
+            Log.v("Service Status", "Success when requesting API")
+        } catch (e : Exception) {
+            Log.e("Service Status", "Error when requesting API\n Details: ${e.message}")
         }
     }
 
+    //Initial dialog for manipulating the app
     private fun showAlertDialog(view : View) {
         val alertBuilder = AlertDialog.Builder(this)
         alertBuilder.setTitle("Bem vindo!")
@@ -81,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         alertBuilder.show()
     }
 
+    //Loading spinner caller
     private fun isLoading(state : Boolean) {
         binding.progressbar.visibility = if (state) View.VISIBLE else View.GONE
     }
