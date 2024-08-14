@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.devrhyan.bipa.test.adapter.RecyclerViewAdapter
 import com.devrhyan.bipa.test.databinding.ActivityMainBinding
 import com.devrhyan.bipa.test.services.api.RetrofitHelper
 import com.devrhyan.bipa.test.services.api.iNodes
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
               CoroutineScope(Dispatchers.IO).launch {
                   withContext(Dispatchers.Main) {
                       try {
-                          isLoading(true);
+                          isLoading(true)
                           handleApi()
                       } catch (e: Exception) {
                           Toast.makeText(applicationContext, "Erro ao recuperar Nodes, verifique sua conexão a internet e tente novamente.", Toast.LENGTH_LONG).show()
@@ -62,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        showAlertDialog(binding.main)
+        showAlertDialog()
     }
 
     //Asynchronous function for data request
@@ -85,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Initial dialog for manipulating the app
-    private fun showAlertDialog(view : View) {
+    private fun showAlertDialog() {
         val alertBuilder = AlertDialog.Builder(this)
         alertBuilder.setTitle("Bem vindo!")
         alertBuilder.setMessage("Este é um App desenvolvido para teste técnico feito por Rhyan Araujo Chaves solicitado pela Bipa. Clique no botão requisitar para obter a lista dos Nodes atualizada.")
