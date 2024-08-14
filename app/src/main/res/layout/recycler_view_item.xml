@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:padding="8dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="70dp"
+      android:padding="8dp">
+
+    <TextView
+        android:id="@+id/nodeName"
+        android:layout_width="98dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:text="Alias"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nodeChannel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nodeKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="publicKey"
+        android:textSize="5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/nodeDataResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/0/0 - 0/0/0"
+        android:textAlignment="textEnd"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/nodeLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nodeChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="channel"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nodeName" />
+
+    <TextView
+        android:id="@+id/nodeCapacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="capacity"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nodeLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cidade - país"
+        android:textAlignment="textEnd"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nodeDataResult" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
